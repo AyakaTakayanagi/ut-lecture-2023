@@ -1,0 +1,30 @@
+import { Sphere } from '@react-three/drei'
+import { useThree } from '@react-three/fiber'
+import { FC, useCallback, useEffect } from 'react'
+
+export const Paint: FC = () => {
+  const size = useThree(state => state.size)
+
+  const handleMouseMove = useCallback(
+    (event: MouseEvent) => {
+      console.log(
+        (event.x / size.width) * 2 - 1,
+        -((event.y / size.height) * 2 - 1)
+      )
+    },
+    [size]
+  )
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [handleMouseMove])
+
+  return (
+    <Sphere args={[100]}>
+      <meshBasicMaterial color='red' />
+    </Sphere>
+  )
+}
