@@ -23,7 +23,7 @@ export const Main: FC = () => {
       <Camera longitude={longitude} latitude={latitude} height={4000} />
       <EastNorthUp longitude={longitude} latitude={latitude}>
         <SunLight />
-        <Plane args={[1e5, 1e5]} position={[0, 0, geoidalHeight]} receiveShadow>
+        <Plane args={[1e5, 1e5]} position={[0, 0, 36]} receiveShadow>
           <meshStandardMaterial color='white' />
         </Plane>
       </EastNorthUp>
